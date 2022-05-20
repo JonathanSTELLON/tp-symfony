@@ -1,0 +1,37 @@
+services:
+  app:
+    restart: unless-stopped
+    build: 
+      dockerfile: Dockerfile
+      context: .
+      target: php
+    container_name: ri7-symfony-app
+    ports:
+      - 9000:9000
+    volumes:
+      - ./:/srv/app
+  
+  nginx:
+    restart: unless-stopped
+    depends_on:
+      - app
+    build: 
+      dockerfile: Dockerfile
+      context: .
+      target: nginx
+    container_name: ri7-symfony-nginx
+    ports:
+      - 800:80
+
+  database:
+    image: postgres:${POSTGRES_VERSION:-13}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      # You should definitely change the password in production
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-symfony}
+      POSTGRES_USER: ${POSTGRES_USER:-symfony}
+    volumes:
+      - ./var/db/data:/var/lib/postgresql/data:rw
+    ports:
+      - 5432
+
