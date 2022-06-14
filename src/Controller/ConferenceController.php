@@ -21,14 +21,14 @@ class ConferenceController extends AbstractController
     }
 
     #[Route('/', name: 'homepage')]
-    public function index(ConferenceRepository $conferenceRepository): Response{
+    public function index(): Response{
         
         return new Response($this->twig->render('conference/index.html.twig', [
-            'conferences' => $conferenceRepository->findAll(),
+           
         ]));
     }
 
-    #[Route('/conference/{id}', name: 'conference')]
+    #[Route('/conference/{slug}', name: 'conference')]
     public function show(Request $request, Conference $conference, CommentRepository $commentRepository): Response{
 
         $offset = max(0, $request->query->getInt('offset', 0));
