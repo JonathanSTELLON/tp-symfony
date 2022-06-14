@@ -7,7 +7,7 @@ services:
       target: php
     container_name: ri7-symfony-app
     ports:
-      - 9000:9000
+      - 8000:8000
     volumes:
       - ./:/srv/app
   
@@ -31,7 +31,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-symfony}
       POSTGRES_USER: ${POSTGRES_USER:-symfony}
     volumes:
-      - ./var/db/data:/var/lib/postgresql/data:rw
-    ports:
-      - 5432
+      - db-data:/var/lib/postgresql/data:rw
+volumes: 
+  db-data:
+
 

@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "symfony_ri7_project",
+            "database": "app",
+            "username": "symfony",
+            "password": "symfony"
+        }
+    ]
+}

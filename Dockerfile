@@ -5,7 +5,7 @@ RUN apk add --no-cache $PHPIZE_DEPS git build-base zsh nodejs npm bash
 
 # Php extension installation
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
-RUN install-php-extensions xsl pdo_mysql intl redis amqp pgsql @composer
+RUN install-php-extensions xsl pdo_pgsql intl redis amqp pgsql @composer
 
 # Oh my zsh installation
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
