@@ -35,6 +35,7 @@ class CommentCrudController extends AbstractCrudController
             ->setLabel('Photo')
             ->onlyOnIndex()
         ;
+        yield TextField::new('state');
     }
 
     public function configureCrud(Crud $crud): Crud
