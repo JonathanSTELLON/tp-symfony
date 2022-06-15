@@ -9,6 +9,16 @@
             "database": "app",
             "username": "symfony",
             "password": "symfony"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "test",
+            "database": "app_test",
+            "username": "symfony",
+            "password": "symfony"
         }
     ]
 }
